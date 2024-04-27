@@ -8,9 +8,9 @@ function getComputerChoice() {
         return "scissors";
 }
 
-let playerScore = 0;
-let computerScore = 0;
-let tie = 0;
+// let playerScore = 0;
+// let computerScore = 0;
+// let tie = 0;
 
 function playRound(playerSelection, computerSelection) {
 
@@ -41,25 +41,42 @@ function playRound(playerSelection, computerSelection) {
 }//end of playRound function
 
 function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const computerSelection = getComputerChoice();
-        //console.log(`computer choice: ${computerSelection}`);
-        let playerSelection = prompt("choose rock, paper or scissors?");
-        console.log(playRound(playerSelection, computerSelection));
-        let round = playRound(playerSelection, computerSelection);
-        if (round === "you won") playerScore++;
-        else if (round === "you lose") computerScore++;
-        else tie++;
 
-    }//end of for loop
+    const computerSelection = getComputerChoice();
+    //console.log(`computer choice: ${computerSelection}`);
+    let playerSelection = prompt("choose rock, paper or scissors?");
+    console.log(playRound(playerSelection, computerSelection));
+    let round = playRound(playerSelection, computerSelection);
+    // if (round === "you won") playerScore++;
+    // else if (round === "you lose") computerScore++;
+    // else tie++;
 
-    if (playerScore > computerScore)
-        console.log(`you won with ${playerScore} scores`);
-    else if (computerScore > playerScore)
-        console.log(`computer beats you with ${computerScore} scores`);
-    else console.log("it's a tie")
 
 }//end of playGame function
 
 //calling playGame function
-playGame();
+//playGame();
+
+//ADDED:
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+
+rockBtn.addEventListener('click', () =>{
+    const computerSelection = getComputerChoice();
+    const playerSelection = "rock";
+    console.log(playRound(playerSelection, computerSelection));
+});
+
+
+paperBtn.addEventListener('click', () =>{
+    const computerSelection = getComputerChoice();
+    const playerSelection = "paper";
+    console.log(playRound(playerSelection, computerSelection));
+});
+
+scissorsBtn.addEventListener('click', () =>{
+    const computerSelection = getComputerChoice();
+    const playerSelection = "paper";
+    console.log(playRound(playerSelection, computerSelection));
+});
