@@ -24,6 +24,8 @@ function playRound(playerSelection, computerSelection) {
         Scissors > Paper
     */
 
+    
+
     if ((playerSelection.toLowerCase() === "rock" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "paper") ||
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "scissors"))
@@ -40,19 +42,16 @@ function playRound(playerSelection, computerSelection) {
 
 }//end of playRound function
 
-function playGame() {
-
-    const computerSelection = getComputerChoice();
-    //console.log(`computer choice: ${computerSelection}`);
-    let playerSelection = prompt("choose rock, paper or scissors?");
-    console.log(playRound(playerSelection, computerSelection));
-    let round = playRound(playerSelection, computerSelection);
-    // if (round === "you won") playerScore++;
-    // else if (round === "you lose") computerScore++;
-    // else tie++;
-
-
-}//end of playGame function
+// function playGame() {
+//     const computerSelection = getComputerChoice();
+//     //console.log(`computer choice: ${computerSelection}`);
+//     let playerSelection = prompt("choose rock, paper or scissors?");
+//     console.log(playRound(playerSelection, computerSelection));
+//     let round = playRound(playerSelection, computerSelection);
+//     if (round === "you won") playerScore++;
+//     else if (round === "you lose") computerScore++;
+//     else tie++;
+// }
 
 //calling playGame function
 //playGame();
@@ -61,22 +60,40 @@ function playGame() {
 const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
+const result = document.querySelector("#result");
+
 
 rockBtn.addEventListener('click', () =>{
     const computerSelection = getComputerChoice();
     const playerSelection = "rock";
-    console.log(playRound(playerSelection, computerSelection));
+    let round = playRound(playerSelection, computerSelection);
+    console.log(round);
+    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
 });
 
 
 paperBtn.addEventListener('click', () =>{
     const computerSelection = getComputerChoice();
     const playerSelection = "paper";
-    console.log(playRound(playerSelection, computerSelection));
+    let round = playRound(playerSelection, computerSelection);
+    console.log(round);
+    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
 });
 
 scissorsBtn.addEventListener('click', () =>{
     const computerSelection = getComputerChoice();
-    const playerSelection = "paper";
-    console.log(playRound(playerSelection, computerSelection));
+    const playerSelection = "scissors";
+    let round = playRound(playerSelection, computerSelection);
+    console.log(round);
+    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
 });
+
+//
+
+//TODOs:
+/*
+    - in playRound: create a p and append it to div (to show the result).
+    - add a class to the result to add the styling later
+    - add a functionality so that when one of the players reaches a score of 5 the game will stops and show the final result
+    
+*/
