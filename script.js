@@ -1,3 +1,8 @@
+const rockBtn = document.querySelector("#rock");
+const paperBtn = document.querySelector("#paper");
+const scissorsBtn = document.querySelector("#scissors");
+const result = document.querySelector("#result");
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
     if (randomNumber === 0)
@@ -8,8 +13,8 @@ function getComputerChoice() {
         return "scissors";
 }
 
-// let playerScore = 0;
-// let computerScore = 0;
+let playerScore = 0;
+let computerScore = 0;
 // let tie = 0;
 
 function playRound(playerSelection, computerSelection) {
@@ -24,21 +29,36 @@ function playRound(playerSelection, computerSelection) {
         Scissors > Paper
     */
 
-    
 
     if ((playerSelection.toLowerCase() === "rock" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "paper") ||
-        (playerSelection.toLowerCase() === "scissors" && computerSelection === "scissors"))
-        return "tie";
+        (playerSelection.toLowerCase() === "scissors" && computerSelection === "scissors")) {
+        const para = document.createElement("p");
+        para.textContent = "tie";
+        result.appendChild(para);
+        return "tie"; //to be removed
+    }
+
     else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") ||
-        (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper"))
-        return "you won";
+        (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")) {
+        const para = document.createElement("p");
+        ++playerScore;
+        para.textContent = `you won, you chose ${playerSelection} and computer chose ${computerSelection}, your score = ${playerScore}`;
+        result.appendChild(para);
+        return "you won"; //to be removed
+    }
+
     else if ((playerSelection.toLowerCase() === "scissors" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "rock" && computerSelection === "paper") ||
-        (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors"))
-        return "you lose";
-    else return "invalid input";
+        (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors")) {
+        ++computerScore;
+        const para = document.createElement("p");
+        para.textContent = `you lose, you chose ${playerSelection} and computer chose ${computerSelection}, computer score = ${computerScore}`;
+        result.appendChild(para);
+        return "you lose"; //to be removed
+    }
+
 
 }//end of playRound function
 
@@ -56,44 +76,42 @@ function playRound(playerSelection, computerSelection) {
 //calling playGame function
 //playGame();
 
-//ADDED:
-const rockBtn = document.querySelector("#rock");
-const paperBtn = document.querySelector("#paper");
-const scissorsBtn = document.querySelector("#scissors");
-const result = document.querySelector("#result");
+function endOfGame(){
+    //if score === 5..
+};
 
+endOfGame();
 
-rockBtn.addEventListener('click', () =>{
+rockBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = "rock";
     let round = playRound(playerSelection, computerSelection);
-    console.log(round);
-    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
+    console.log(round); //to be removed
+    //result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; 
 });
 
 
-paperBtn.addEventListener('click', () =>{
+paperBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = "paper";
     let round = playRound(playerSelection, computerSelection);
-    console.log(round);
-    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
+    console.log(round); // to be removed
+    //result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
 });
 
-scissorsBtn.addEventListener('click', () =>{
+scissorsBtn.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = "scissors";
     let round = playRound(playerSelection, computerSelection);
-    console.log(round);
-    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
+    console.log(round); //to be removed
+    //result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
 });
 
 //
 
 //TODOs:
 /*
-    - in playRound: create a p and append it to div (to show the result).
     - add a class to the result to add the styling later
-    - add a functionality so that when one of the players reaches a score of 5 the game will stops and show the final result
+    - implement endOfGame so that when one of the players reaches a score of 5 the game will stops and show the final result and set the styles to initial
     
 */
