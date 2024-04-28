@@ -87,7 +87,10 @@ rockBtn.addEventListener('click', () => {
     const playerSelection = "rock";
     let round = playRound(playerSelection, computerSelection);
     console.log(round); //to be removed
-    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; //to be removed or edited
+    result.innerHTML = `
+    ${round}<br><br>
+    You chose: ${playerSelection}<br>
+    Computer chose: ${computerSelection}`; //to be removed or edited    
 });
 
 
@@ -96,7 +99,10 @@ paperBtn.addEventListener('click', () => {
     const playerSelection = "paper";
     let round = playRound(playerSelection, computerSelection);
     console.log(round); // to be removed
-    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; //to be removed or edited
+    result.innerHTML = `
+    ${round}<br><br>
+    You chose: ${playerSelection}<br>
+    Computer chose: ${computerSelection}`; //to be removed or edited      
 });
 
 scissorsBtn.addEventListener('click', () => {
@@ -104,7 +110,10 @@ scissorsBtn.addEventListener('click', () => {
     const playerSelection = "scissors";
     let round = playRound(playerSelection, computerSelection);
     console.log(round); //to be removed
-    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; //to be removed or edited
+    result.innerHTML = `
+    ${round}<br><br>
+    You chose: ${playerSelection}<br>
+    Computer chose: ${computerSelection}`; //to be removed or edited    
 });
 
 //
