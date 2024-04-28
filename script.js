@@ -33,19 +33,19 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection.toLowerCase() === "rock" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "paper") ||
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "scissors")) {
-        const para = document.createElement("p");
-        para.textContent = "tie";
-        result.appendChild(para);
+        // const para = document.createElement("p");
+        // para.textContent = "tie";
+        // result.appendChild(para);
         return "tie"; //to be removed
     }
 
     else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")) {
-        const para = document.createElement("p");
         ++playerScore;
-        para.textContent = `you won, you chose ${playerSelection} and computer chose ${computerSelection}, your score = ${playerScore}`;
-        result.appendChild(para);
+        const para = document.createElement("p");
+        // para.textContent = `you won, you chose ${playerSelection} and computer chose ${computerSelection}, your score = ${playerScore}`;
+        // result.appendChild(para);
         return "you won"; //to be removed
     }
 
@@ -53,9 +53,9 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection.toLowerCase() === "rock" && computerSelection === "paper") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors")) {
         ++computerScore;
-        const para = document.createElement("p");
-        para.textContent = `you lose, you chose ${playerSelection} and computer chose ${computerSelection}, computer score = ${computerScore}`;
-        result.appendChild(para);
+        // const para = document.createElement("p");
+        // para.textContent = `you lose, you chose ${playerSelection} and computer chose ${computerSelection}, computer score = ${computerScore}`;
+        // result.appendChild(para);
         return "you lose"; //to be removed
     }
 
@@ -76,7 +76,7 @@ function playRound(playerSelection, computerSelection) {
 //calling playGame function
 //playGame();
 
-function endOfGame(){
+function endOfGame() {
     //if score === 5..
 };
 
@@ -87,7 +87,7 @@ rockBtn.addEventListener('click', () => {
     const playerSelection = "rock";
     let round = playRound(playerSelection, computerSelection);
     console.log(round); //to be removed
-    //result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; 
+    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; //to be removed or edited
 });
 
 
@@ -96,7 +96,7 @@ paperBtn.addEventListener('click', () => {
     const playerSelection = "paper";
     let round = playRound(playerSelection, computerSelection);
     console.log(round); // to be removed
-    //result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
+    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; //to be removed or edited
 });
 
 scissorsBtn.addEventListener('click', () => {
@@ -104,7 +104,7 @@ scissorsBtn.addEventListener('click', () => {
     const playerSelection = "scissors";
     let round = playRound(playerSelection, computerSelection);
     console.log(round); //to be removed
-    //result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`;
+    result.textContent = `you: ${playerSelection} - computer: ${computerSelection} => result = ${round}`; //to be removed or edited
 });
 
 //

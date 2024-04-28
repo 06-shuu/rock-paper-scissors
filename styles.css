@@ -1,0 +1,50 @@
+body {
+    height: 100vh;
+    margin: 0;
+    /* overflow: hidden; */
+    font-family: Roboto, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f34ada;
+    background-image: url(./images/diagmonds-light.png);
+    
+    /* background-image: radial-gradient(#fff 10%, transparent 11%),
+        radial-gradient(#fff 10%, transparent 11%); */
+    background-size: 60px 60px;
+    background-position: 0 0, 30px 30px;
+    background-repeat: repeat;
+
+}
+
+.gameboy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 468px;
+    width: 388px;
+    background-color: rgb(78, 245, 245);
+    background-image: url(./images/bedge-grunge.png);
+    /* border: 1px solid #00bfff; */
+    /* border: 1px solid rgb(78, 245, 245); */
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.4);
+    border-bottom-right-radius: 70px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+
+}
+
+.gameboy-screen {
+    
+}
+
+.gameboy-btns {
+    display: flex;
+    justify-content: center;
+
+}

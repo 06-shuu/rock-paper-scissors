@@ -5,16 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <button id="rock" >Rock</button>
-    <button id="paper">Paper</button>
-    <button id="scissors">Scissors</button>
-
-    <div id="result"></div>
+    <div class="container">
+        <div class="gameboy">
+            <div class="gameboy-screen">
+                <div class="screen">
+                    <div id="result"></div>
+                </div>
+            </div>
+            <div class="gameboy-btns">
+                <button id="rock">Rock</button>
+                <button id="paper">Paper</button>
+                <button id="scissors">Scissors</button>
+            </div>
+        </div>
+    </div> <!--end of container-->
 
     <script src="script.js"></script>
 </body>
 
 </html>
+<!-- 
+    TODO(s):
+    - add restart button
+-->
