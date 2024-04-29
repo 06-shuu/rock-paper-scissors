@@ -1,6 +1,7 @@
 # Rock Paper Scissors
 A Game Boy-themed rock-paper-scissors using HTML, CSS, and Javascript
-<img width="293" alt="rps" src="https://github.com/06-shuu/rock-paper-scissors/assets/154021913/88dec6db-0604-4d6b-a578-de3df48d73e6">
+<br />
+<img width="250" alt="rps" src="https://github.com/06-shuu/rock-paper-scissors/assets/154021913/97186d29-5475-4676-929a-47d5ceae7bcf">
 
 **Resourses:** 
  - Idea: https://www.theodinproject.com/
