@@ -2,6 +2,11 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const result = document.querySelector("#result");
+const restart = document.querySelector("#restart-btn");
+
+let playerScore = 0;
+let computerScore = 0;
+let gameEnded = false;
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 3);
@@ -12,11 +17,6 @@ function getComputerChoice() {
     else
         return "scissors";
 }
-
-let playerScore = 0;
-let computerScore = 0;
-let gameEnded = false;
-
 
 function playRound(playerSelection, computerSelection) {
 
@@ -34,10 +34,7 @@ function playRound(playerSelection, computerSelection) {
     if ((playerSelection.toLowerCase() === "rock" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "paper") ||
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "scissors")) {
-        // const para = document.createElement("p");
-        // para.textContent = "tie";
-        // result.appendChild(para);
-        return "tie"; //to be removed
+        return "tie"; 
     }
 
     else if ((playerSelection.toLowerCase() === "rock" && computerSelection === "scissors") ||
@@ -45,25 +42,51 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")) {
         ++playerScore;
         const para = document.createElement("p");
-        // para.textContent = `you won, you chose ${playerSelection} and computer chose ${computerSelection}, your score = ${playerScore}`;
-        // result.appendChild(para);
-        return "you won"; //to be removed
+        return "you won";
     }
 
     else if ((playerSelection.toLowerCase() === "scissors" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "rock" && computerSelection === "paper") ||
         (playerSelection.toLowerCase() === "paper" && computerSelection === "scissors")) {
         ++computerScore;
-        // const para = document.createElement("p");
-        // para.textContent = `you lose, you chose ${playerSelection} and computer chose ${computerSelection}, computer score = ${computerScore}`;
-        // result.appendChild(para);
-        return "you lose"; //to be removed
+        return "you lose"; 
     }
 
 
 }//end of playRound function
 
 
+function endOfGame() {
+    if (computerScore === 5 || playerScore === 5) {
+        gameEnded = true;
+        if (computerScore === 5) {
+            result.innerHTML = `
+            You lost the game <br> <br>(╥﹏╥)
+            `;
+            result.style.color = "rgb(107, 20, 20)";
+            result.style.fontWeight = "700"
+        }
+        else if (playerScore === 5) {
+            result.innerHTML = `
+            You won the game <br> <br> (๑´>᎑<)~*
+            `;
+            result.style.color = "rgb(55, 29, 147)"
+            result.style.fontWeight = "700"
+        }
+    }
+};
+
+
+function restartGame() {
+    playerScore = 0; 
+    computerScore = 0; 
+    gameEnded = false; 
+    result.innerHTML = `Rock Paper Scissor<br><br>Start`; 
+    result.style.color = ""; 
+    result.style.fontWeight = "";
+}
+
+//Event listeners:
 
 rockBtn.addEventListener('click', () => {
     if (!gameEnded) {
@@ -72,9 +95,9 @@ rockBtn.addEventListener('click', () => {
         let round = playRound(playerSelection, computerSelection);
         console.log(round); //to be removed
         result.innerHTML = `
-        ${round}<br><br>
-        You chose: ${playerSelection}<br>
-        Computer chose: ${computerSelection}`; //to be removed or edited   
+        <strong> -- ${round} -- </strong><br><br>
+        You chose:<br>${playerSelection}<br><br>
+        Computer chose:<br> ${computerSelection}`;   
         endOfGame();
     }
 });
@@ -87,9 +110,9 @@ paperBtn.addEventListener('click', () => {
         let round = playRound(playerSelection, computerSelection);
         console.log(round); // to be removed
         result.innerHTML = `
-        ${round}<br><br>
-        Your choice:${playerSelection}<br>
-        Computer chose: ${computerSelection}`; //to be removed or edited      
+        <strong> -- ${round} -- </strong><br><br>
+        You chose:<br>${playerSelection}<br><br>
+        Computer chose:<br> ${computerSelection}`;     
         endOfGame();
     }
 });
@@ -101,34 +124,11 @@ scissorsBtn.addEventListener('click', () => {
         let round = playRound(playerSelection, computerSelection);
         console.log(round); //to be removed
         result.innerHTML = `
-        ${round}<br><br>
-        You chose: ${playerSelection}<br>
-        Computer chose: ${computerSelection}`; //to be removed or edited    
+        <strong> -- ${round} -- </strong><br><br>
+        You chose:<br>${playerSelection}<br><br>
+        Computer chose:<br> ${computerSelection}`;    
         endOfGame();
     }
 });
 
-
-function endOfGame() {
-    if (computerScore === 5 || playerScore === 5){
-        gameEnded = true;
-    if (computerScore === 5) {
-        result.innerHTML = `
-        You lost the game <br> <br>(╥﹏╥)
-        `;
-    }
-    else if (playerScore === 5) {
-        result.innerHTML = `
-        You won the game
-        `;
-    }
-}
-};
-
-endOfGame();
-//
-
-//TODOs:
-/*
-      - implement restart button
-*/
+restart.addEventListener('click', restartGame);
