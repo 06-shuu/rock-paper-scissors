@@ -15,7 +15,8 @@ function getComputerChoice() {
 
 let playerScore = 0;
 let computerScore = 0;
-// let tie = 0;
+let gameEnded = false;
+
 
 function playRound(playerSelection, computerSelection) {
 
@@ -62,65 +63,72 @@ function playRound(playerSelection, computerSelection) {
 
 }//end of playRound function
 
-// function playGame() {
-//     const computerSelection = getComputerChoice();
-//     //console.log(`computer choice: ${computerSelection}`);
-//     let playerSelection = prompt("choose rock, paper or scissors?");
-//     console.log(playRound(playerSelection, computerSelection));
-//     let round = playRound(playerSelection, computerSelection);
-//     if (round === "you won") playerScore++;
-//     else if (round === "you lose") computerScore++;
-//     else tie++;
-// }
 
-//calling playGame function
-//playGame();
-
-function endOfGame() {
-    //if score === 5..
-};
-
-endOfGame();
 
 rockBtn.addEventListener('click', () => {
-    const computerSelection = getComputerChoice();
-    const playerSelection = "rock";
-    let round = playRound(playerSelection, computerSelection);
-    console.log(round); //to be removed
-    result.innerHTML = `
-    ${round}<br><br>
-    You chose: ${playerSelection}<br>
-    Computer chose: ${computerSelection}`; //to be removed or edited    
+    if (!gameEnded) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = "rock";
+        let round = playRound(playerSelection, computerSelection);
+        console.log(round); //to be removed
+        result.innerHTML = `
+        ${round}<br><br>
+        You chose: ${playerSelection}<br>
+        Computer chose: ${computerSelection}`; //to be removed or edited   
+        endOfGame();
+    }
 });
 
 
 paperBtn.addEventListener('click', () => {
-    const computerSelection = getComputerChoice();
-    const playerSelection = "paper";
-    let round = playRound(playerSelection, computerSelection);
-    console.log(round); // to be removed
-    result.innerHTML = `
-    ${round}<br><br>
-    You chose: ${playerSelection}<br>
-    Computer chose: ${computerSelection}`; //to be removed or edited      
+    if (!gameEnded) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = "paper";
+        let round = playRound(playerSelection, computerSelection);
+        console.log(round); // to be removed
+        result.innerHTML = `
+        ${round}<br><br>
+        Your choice:${playerSelection}<br>
+        Computer chose: ${computerSelection}`; //to be removed or edited      
+        endOfGame();
+    }
 });
 
 scissorsBtn.addEventListener('click', () => {
-    const computerSelection = getComputerChoice();
-    const playerSelection = "scissors";
-    let round = playRound(playerSelection, computerSelection);
-    console.log(round); //to be removed
-    result.innerHTML = `
-    ${round}<br><br>
-    You chose: ${playerSelection}<br>
-    Computer chose: ${computerSelection}`; //to be removed or edited    
+    if (!gameEnded) {
+        const computerSelection = getComputerChoice();
+        const playerSelection = "scissors";
+        let round = playRound(playerSelection, computerSelection);
+        console.log(round); //to be removed
+        result.innerHTML = `
+        ${round}<br><br>
+        You chose: ${playerSelection}<br>
+        Computer chose: ${computerSelection}`; //to be removed or edited    
+        endOfGame();
+    }
 });
 
+
+function endOfGame() {
+    if (computerScore === 5 || playerScore === 5){
+        gameEnded = true;
+    if (computerScore === 5) {
+        result.innerHTML = `
+        You lost the game <br> <br>(╥﹏╥)
+        `;
+    }
+    else if (playerScore === 5) {
+        result.innerHTML = `
+        You won the game
+        `;
+    }
+}
+};
+
+endOfGame();
 //
 
 //TODOs:
 /*
-    - add a class to the result to add the styling later
-    - implement endOfGame so that when one of the players reaches a score of 5 the game will stops and show the final result and set the styles to initial
-    
+      - implement restart button
 */
