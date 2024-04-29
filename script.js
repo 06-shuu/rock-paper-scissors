@@ -2,6 +2,7 @@ const rockBtn = document.querySelector("#rock");
 const paperBtn = document.querySelector("#paper");
 const scissorsBtn = document.querySelector("#scissors");
 const result = document.querySelector("#result");
+const score = document.querySelector("#score");
 const restart = document.querySelector("#restart-btn");
 
 let playerScore = 0;
@@ -41,7 +42,6 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection.toLowerCase() === "paper" && computerSelection === "rock") ||
         (playerSelection.toLowerCase() === "scissors" && computerSelection === "paper")) {
         ++playerScore;
-        const para = document.createElement("p");
         return "you won";
     }
 
@@ -81,9 +81,10 @@ function restartGame() {
     playerScore = 0; 
     computerScore = 0; 
     gameEnded = false; 
-    result.innerHTML = `Rock Paper Scissor<br><br>Start`; 
+    result.innerHTML = `Rock Paper Scissors<br><br>Click R, P, or S<br><br>**start**`; 
     result.style.color = ""; 
     result.style.fontWeight = "";
+    score.innerHTML =""
 }
 
 //Event listeners:
@@ -93,11 +94,14 @@ rockBtn.addEventListener('click', () => {
         const computerSelection = getComputerChoice();
         const playerSelection = "rock";
         let round = playRound(playerSelection, computerSelection);
-        console.log(round); //to be removed
         result.innerHTML = `
-        <strong> -- ${round} -- </strong><br><br>
         You chose:<br>${playerSelection}<br><br>
-        Computer chose:<br> ${computerSelection}`;   
+        Comp chose:<br> ${computerSelection}<br><br><br>
+        <strong> -- ${round} -- </strong>
+        `;   
+        score.innerHTML =`
+        you: ${playerScore} comp: ${computerScore}
+        `
         endOfGame();
     }
 });
@@ -108,11 +112,14 @@ paperBtn.addEventListener('click', () => {
         const computerSelection = getComputerChoice();
         const playerSelection = "paper";
         let round = playRound(playerSelection, computerSelection);
-        console.log(round); // to be removed
         result.innerHTML = `
-        <strong> -- ${round} -- </strong><br><br>
         You chose:<br>${playerSelection}<br><br>
-        Computer chose:<br> ${computerSelection}`;     
+        Comp chose:<br> ${computerSelection}<br><br><br>
+        <strong> -- ${round} -- </strong>
+        `;    
+        score.innerHTML =`
+        you: ${playerScore} comp: ${computerScore}
+        ` 
         endOfGame();
     }
 });
@@ -122,11 +129,14 @@ scissorsBtn.addEventListener('click', () => {
         const computerSelection = getComputerChoice();
         const playerSelection = "scissors";
         let round = playRound(playerSelection, computerSelection);
-        console.log(round); //to be removed
         result.innerHTML = `
-        <strong> -- ${round} -- </strong><br><br>
         You chose:<br>${playerSelection}<br><br>
-        Computer chose:<br> ${computerSelection}`;    
+        Comp chose:<br> ${computerSelection}<br><br><br>
+        <strong> -- ${round} -- </strong>
+        `;  
+        score.innerHTML =`
+        you: ${playerScore} comp: ${computerScore}
+        `   
         endOfGame();
     }
 });
