@@ -47,6 +47,7 @@ body {
 
 .screen{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
@@ -57,6 +58,13 @@ body {
     border-radius: 20px;
     background-color: rgb(46, 154, 50);
     background-image: url(./images/screen.png);
+}
+
+#score{
+    padding-bottom: 38px;
+    font-family: 'Public Pixel', sans-serif;
+    font-size: 12px;
+    font-weight: bolder;
 }
 
 #result{
